@@ -57,3 +57,23 @@ var score = 0;
 var timer= 0;
 
 
+var currentQuestionIndex = 0;
+var score = 0;
+var secondsLeft = 60; 
+
+var countdownEl = document.getElementById("countdown");
+
+function setTime() {
+  var timerInterval = setInterval(function() {
+    secondsLeft--;
+    countdownEl.textContent = secondsLeft + " seconds left.";
+
+    if (secondsLeft === 0) {
+      clearInterval(timerInterval);
+      
+    }
+  }, 1000);
+}
+
+
+setTime();

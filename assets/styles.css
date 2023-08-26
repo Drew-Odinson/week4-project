@@ -48,6 +48,16 @@ h1 {
   background-color: #e63119;
   ;
 }
+.questions {
+  font-size: 20px;
+  color: black;
+  background-color: #3070d1;
+}
+.options {
+  font-size: 15px;
+  color: black;
+  background-color:#3070d1;
+}
 
 .countdown-box {
   position: fixed;
