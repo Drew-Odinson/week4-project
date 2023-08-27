@@ -3,7 +3,8 @@ const questions = [
   {
     question: "Question 1: What is var?",
     options: ["An element", "a variable", "a function", "placemarker"],
-    answer: 1
+    answer: 1 
+
   },
   {
     question: "Question 2: What is an array?",
@@ -50,30 +51,41 @@ const questions = [
     options: [".stopElementRun", "delete object", "erase object", ".thanosSnap.object"],
     answer: 1
   },
-],
+];
+
+function checkAnswer(answer) {
+   // If users input is === to answer then true
+   // If users input is != to answer then false
+   if (usersInput === answer) {
+    
+   }
+}
+
+// Need to add a users input area
+
+//Need a way to keep and record score based on timer
 
 var currentQuestionIndex = 0;
-var score = 0;
-var timer= 0;
 
 
-var currentQuestionIndex = 0;
-var score = 0;
-var secondsLeft = 60; 
+document.getElementById("question").textContent = "whatever text";
 
-var countdownEl = document.getElementById("countdown");
+
 
 function setTime() {
-  var timerInterval = setInterval(function() {
+  var secondsLeft = 60; 
+  var countdownEl = document.getElementById("countdown");
+  var timerInterval = setInterval(function () {
     secondsLeft--;
     countdownEl.textContent = secondsLeft + " seconds left.";
 
     if (secondsLeft === 0) {
       clearInterval(timerInterval);
-      
+
     }
   }, 1000);
 }
 
 
 setTime();
+

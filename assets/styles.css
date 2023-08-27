@@ -41,6 +41,7 @@ h1 {
   font-size: 1.3em;
   padding: 20px;
   margin-bottom: 60px;
+  display: inline-block;
   ;
 }
 
@@ -83,4 +84,12 @@ footer {
   width: 100%;
   text-align: center;
   font: bold;
+}
+.results-container {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-weight: normal;
+  background-color: #eff5f8;
+  border-radius: 5px;
 }
