@@ -15,31 +15,37 @@
             </h2>
 
             <div id="options">
-                <ul>
+                <!-- <ul>
                     <li>
-                        <button></button>
+                        <button></button> //buttons add in JS
                     </li>
                     <li>
-                        <button></button>
+                        <button></button>//buttons add in JS
                     </li>
                     <li>
-                        <button></button>
+                        <button></button>//buttons add in JS
                     </li>
                     <li>
-                        <button></button>
+                        <button></button>//buttons add in JS
                     </li>
-                </ul>
-              
+                </ul> -->
 
-              
+
+
             </div>
 
             <div id="timer">
                 <h3></h3>
             </div>
 
-            <button id="add">Next</button>
+            <button id="add"></button>
+            <!-- Need to change this to a "Do you want to play again" button and have it pop up at the end of the game. -->
         </div>
+        <!-- <button id="next" style="display: none;">Next</button>
+         -->
+         <button id="play-again" style="display: none;">Play Again</button>
+         <button id="restart" onclick="restartGame()" style="display: none;">Restart</button>
+
 
         <div class="countdown-box">
             <div class="countdown-timer" id="countdown"></div>
@@ -49,7 +55,15 @@
         <div class="results-container">
             <h2>Test Results</h2>
             <p id="score"></p>
+            <!-- this is working as I wanted it too -->
         </div>
+
+        <!-- Why is CSS not fixing??????-->
+        <!-- <div id="topScoreBox">
+            <h3>Top Score:</h3>
+            <p id="topScoreValue">0</p>
+            <p id="topScoreInitials"></p>
+        </div> -->
 
 
     </div>

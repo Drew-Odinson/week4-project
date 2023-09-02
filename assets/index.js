@@ -53,39 +53,97 @@ const questions = [
   },
 ];
 
-function checkAnswer(answer) {
-   // If users input is === to answer then true
-   // If users input is != to answer then false
-   if (usersInput === answer) {
-    
-   }
-}
 
-// Need to add a users input area
-
-//Need a way to keep and record score based on timer
 
 var currentQuestionIndex = 0;
+var wrongAnswers = 0;
+var finalScore = 0;
 
 
-document.getElementById("question").textContent = "whatever text";
+var questionElement = document.getElementById("question");
+var optionsElement = document.getElementById("options");
+var countdownElement = document.getElementById("countdown");
+var scoreElement = document.getElementById("score");
 
+
+//Display the questions and have it cycle to the next one
+function displayQuestion(index) {
+  if (index < questions.length) {
+    questionElement.textContent = questions[index].question;
+
+    optionsElement.innerHTML = '';
+
+    questions[index].options.forEach((option, optionIndex) => {
+      var button = document.createElement("button");
+      button.textContent = option;
+      //Not sure why CSS would not work to make the btton so added it here. 
+      button.style.background = "red";
+      button.style.fontSize = "20px";
+      button.addEventListener("click", () => checkAnswer(optionIndex));
+      optionsElement.appendChild(button);
+      // console.log(optionIndex)
+  
+    });
+  } else {
+    // All questions answered and final score is figured here.
+    clearInterval(timerInterval);
+    finalScore = calculateScore(secondsLeft);
+    scoreElement.textContent = "Final Score: " + finalScore;
+    scoreElement.textContent += " | Seconds Left: " + secondsLeft;
+    scoreElement.textContent += " | Wrong Answers: " + wrongAnswers;
+    // May add in soem text showing that for every wrong answer the users loses 5 seconds for score
+    // Need to figure how to add in a "Keep Top Score" feature in here.
+    // If index is = to the last question show results
+  
+  }
+
+  }
+
+
+// Check users input for correct answers
+function checkAnswer(selectedOptionIndex) {
+  var correctAnswerIndex = questions[currentQuestionIndex].answer;
+
+  if (selectedOptionIndex !== correctAnswerIndex) {
+    wrongAnswers++;
+  }
+
+  currentQuestionIndex++;
+  displayQuestion(currentQuestionIndex);
+}
+
+function calculateScore(timeLeft) {
+  return timeLeft - (wrongAnswers * 5); //Final score = timeleft - how many wrong answers times 5 seconds
+}
 
 
 function setTime() {
-  var secondsLeft = 60; 
-  var countdownEl = document.getElementById("countdown");
-  var timerInterval = setInterval(function () {
+  var secondsLeft = 60; //may wanna increase time to 75 seconds but will start and see what 60 seconds looks like when done
+var timerInterval;
+  timerInterval = setInterval(function () {
     secondsLeft--;
-    countdownEl.textContent = secondsLeft + " seconds left.";
+    countdownElement.textContent = secondsLeft + " seconds left.";
 
-    if (secondsLeft === 0) {
+    if (secondsLeft === 0 || currentQuestionIndex >= questions.length) {
       clearInterval(timerInterval);
+
+  
+      finalScore = calculateScore(secondsLeft);
+      scoreElement.textContent = "Final Score: " + finalScore;
+      scoreElement.textContent += " | Seconds Left: " + secondsLeft;
+      scoreElement.textContent += " | Wrong Answers: " + wrongAnswers;
+
+      //Not workin the way I want it too...
+//       var initials = prompt("Enter your initials:");
+// document.getElementById("topScoreInitials").textContent = "Initials: " + initials;
+
+
 
     }
   }, 1000);
 }
-
-
+displayQuestion(currentQuestionIndex);
 setTime();
+
+
 
