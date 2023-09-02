@@ -99,10 +99,11 @@ footer {
 
 /* also need to ask about checking for resizing for mobile or small views. */
 
-.topScoreBox {
+#topScoreBox {
   padding: 0px;
-  position: relative;
-  top: -650px; /*why is this not working? */
+  position: absolute;
+  border: 3px solid black;
+  top: 20px; /*why is this not working? */
 }
 .topScoreValue {
   padding: 0px;
@@ -112,5 +113,8 @@ footer {
 .topScoreInitials {
   padding: 0px;
   position: relative;
-  top: -650px;  /*why is this not working? */
+  top: 20px;  /*why is this not working? */
+}
+#mainContainer {
+  position: relative;
 }

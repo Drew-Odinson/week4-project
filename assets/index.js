@@ -64,6 +64,15 @@ var questionElement = document.getElementById("question");
 var optionsElement = document.getElementById("options");
 var countdownElement = document.getElementById("countdown");
 var scoreElement = document.getElementById("score");
+var timerInterval;
+var secondsLeft = 60; //may wanna increase time to 75 seconds but will start and see what 60 seconds looks like when done
+var highScore = JSON.parse(localStorage.getItem("highScore")) || {user: "", score: 0};
+var restartButton = document.getElementById("add");
+restartButton.style.display = "none";
+
+document.getElementById("topScoreInitials").textContent = "Initials: " + highScore.user;
+document.getElementById('topScoreValue').textContent = "topScoreValue" + highScore.score;
+
 
 
 //Display the questions and have it cycle to the next one
@@ -94,7 +103,18 @@ function displayQuestion(index) {
     // May add in soem text showing that for every wrong answer the users loses 5 seconds for score
     // Need to figure how to add in a "Keep Top Score" feature in here.
     // If index is = to the last question show results
-  
+    var highScore = JSON.parse(localStorage.getItem("highScore")) || {user: "", score: 0};
+          var initials = prompt("Enter your initials:");
+          if (highScore.score < finalScore){
+            highScore = {
+              user:initials,score:finalScore
+              
+            }
+          }
+localStorage.setItem("highScore", JSON.stringify(highScore));
+    document.getElementById("topScoreInitials").textContent = "Initials: " + highScore.user;
+    document.getElementById('topScoreValue').textContent = "topScoreValue" + highScore.score;
+    restartButton.style.display = "block";
   }
 
   }
@@ -118,8 +138,7 @@ function calculateScore(timeLeft) {
 
 
 function setTime() {
-  var secondsLeft = 60; //may wanna increase time to 75 seconds but will start and see what 60 seconds looks like when done
-var timerInterval;
+ 
   timerInterval = setInterval(function () {
     secondsLeft--;
     countdownElement.textContent = secondsLeft + " seconds left.";
@@ -136,7 +155,7 @@ var timerInterval;
       //Not workin the way I want it too...
 //       var initials = prompt("Enter your initials:");
 // document.getElementById("topScoreInitials").textContent = "Initials: " + initials;
-
+// document.getElementById('topScoreValue').textContent = "topScoreValue" = finalScore;
 
 
     }
@@ -147,3 +166,74 @@ setTime();
 
 
 
+
+
+// var initials = prompt("Enter your initials:");
+// document.getElementById("topScoreInitials").textContent = "Initials: " + initials;
+
+// function restartGame() {
+//   currentQuestionIndex = 0;
+//   wrongAnswers = 0;
+//   finalScore = 0;
+//   secondsLeft = 60; // Reset the timer to the initial value
+  
+//   // Clear the top score and initials
+//   document.getElementById("topScoreValue").textContent = "0";
+//   document.getElementById("topScoreInitials").textContent = "";
+
+//   // Hide the restart button and show the next button
+//   document.getElementById("restart").style.display = "none";
+//   document.getElementById("next").style.display = "block";
+
+//   // Restart the quiz
+//   displayQuestion(currentQuestionIndex);
+//   setTime();
+// }
+// function displayQuestion(index) {
+//   if (index < questions.length) {
+//     // Existing code to display questions
+    
+//     // Show the "next" button and hide the "restart" button
+//     document.getElementById("next").style.display = "block";
+//     document.getElementById("restart").style.display = "none";
+//   } else {
+//     // Existing code to calculate final score
+    
+//     // Show the "restart" button and hide the "next" button
+//     document.getElementById("restart").style.display = "block";
+//     document.getElementById("next").style.display = "none";
+//   }
+// }
+
+// Create a new var for tops
+//set local storage for top scores, a different function for this at the end of the game
+//insdie this function I will have to be able add current score to topscores array
+//then sort top scores to plave the highest score at the top of the list.. Google sort JS
+//Creat a var that stores the top three topscores. 
+//Set the local storage, call it top score to hold these top three, then render top scores.
+
+//get top scores
+
+// // Check this code to keep highscores
+// function renderTopScores() {
+//   var topScores //get parsed top scores from local storage 
+//   // link this new top scores to HTML
+
+//   todoCountSpan.textContent = todos.length;
+  
+//   // Loop through the top scores array and for each one create a list item for the top scores and uses intis
+//   //Give the user a box to enter their personal info at the end of the game
+//   for (var i = 0; i < todos.length; i++) {
+//     var todo = todos[i];
+
+//     var li = document.createElement("li");
+//     li.textContent = todo;
+//     li.setAttribute("data-index", i);
+
+//     var button = document.createElement("button");
+//     button.textContent = "Complete ✔️";
+
+//     li.appendChild(button);
+//     todoList.appendChild(li);
+//   }
+// }

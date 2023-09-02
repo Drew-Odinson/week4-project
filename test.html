@@ -10,8 +10,9 @@
 
 <body>
     <div class="wrapper">
-        <div class="container">
+        <div class="container" id="mainContainer">
             <h2 id="question">question
+
             </h2>
 
             <div id="options">
@@ -38,13 +39,13 @@
                 <h3></h3>
             </div>
 
-            <button id="add"></button>
+            <button id="add"><a href="index.html">Restart</a></button>
             <!-- Need to change this to a "Do you want to play again" button and have it pop up at the end of the game. -->
         </div>
         <!-- <button id="next" style="display: none;">Next</button>
          -->
-         <button id="play-again" style="display: none;">Play Again</button>
-         <button id="restart" onclick="restartGame()" style="display: none;">Restart</button>
+         <!-- <button id="play-again" style="display: none;">Play Again</button>
+         <button id="restart" style="display: none;">Restart</button> -->
 
 
         <div class="countdown-box">
@@ -59,11 +60,11 @@
         </div>
 
         <!-- Why is CSS not fixing??????-->
-        <!-- <div id="topScoreBox">
+        <div id="topScoreBox">
             <h3>Top Score:</h3>
             <p id="topScoreValue">0</p>
             <p id="topScoreInitials"></p>
-        </div> -->
+        </div>
 
 
     </div>
